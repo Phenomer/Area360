@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>360 Degree Video Panorama Viewer</title>
+    <link rel="stylesheet" href="/src/styles/main.css">
+</head>
+
+<body>
+    <dialog id="configurationDialog">
+        <button id="playButton">はじめる</button>
+        <fieldset>
+            <div>
+                <input id="enableCharacter" type="checkbox" checked>
+                <label for="enableCharacter">キャラクターを呼ぶ</label>
+            </div>
+            <div>
+                <input id="enableTalk" type="checkbox" checked>
+                <label for="enableTalk">おはなしする</label>
+            </div>
+            <div>
+                <input id="enableVR" type="checkbox">
+                <label for="enableVR">VRモードで体験</label>
+            </div>
+            <div>
+                <input id="enableInspector" type="checkbox">
+                <label for="enableInspector">インスペクターを有効にする(デバッグ用)</label>
+            </div>
+            <div>終了したい時はEscキーを押してください。</div>
+        </fieldset>
+        <pre id="errLog"></pre>
+    </dialog>
+    <canvas id="renderCanvas"></canvas>
+
+    <div id="debugConsole">
+        <div id="gloriaVoice">
+            <audio id="rtcAudio" autoplay="true"></audio>
+        </div>
+
+        <button id="rtcStop">RTC Stop</button>
+
+        <h2>Data channel</h2>
+        <pre id="textChannel"></pre>
+        <pre id="telopChannel"></pre>
+
+        <h2>State</h2>
+        <p>
+            ICE gathering state: <span id="iceGatheringState"></span>
+        </p>
+        <p>
+            ICE connection state: <span id="iceConnectionState"></span>
+        </p>
+        <p>
+            Signaling state: <span id="signalingState"></span>
+        </p>
+
+        <h2>SDP</h2>
+        <h3>Offer</h3>
+        <pre id="offerSDP"></pre>
+
+        <h3>Answer</h3>
+        <pre id="answerSDP"></pre>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
